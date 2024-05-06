@@ -1,0 +1,29 @@
+/* About.css */
+
+.about-container {
+    max-width: 800px; /* Justera bredden efter behov */
+    margin: 0 auto; /* Centrera innehållet horisontellt */
+    padding: 20px;
+}
+
+.about-heading {
+    font-size: 28px; /* Justera storleken på rubriken efter behov */
+    margin-bottom: 20px; /* Justera avståndet nedanför rubriken */
+}
+
+.about-description {
+    font-size: 18px; /* Justera storleken på beskrivningen efter behov */
+    line-height: 1.6; /* Justera radavståndet för läsbarhet */
+    color: #333; /* Justera textfärgen efter behov */
+    margin-bottom: 20px; /* Justera avståndet nedanför beskrivningen */
+}
+
+.about-highlight {
+    font-size: 20px; /* Justera storleken på markeringen efter behov */
+    color: yellow; /* Justera färgen på markeringen efter behov */
+    font-weight: bold; /* Gör texten fet efter behov */
+}
+
+.about-highlight + p {
+    margin-top: 10px; /* Justera avståndet över den efterföljande paragrafen */
+}

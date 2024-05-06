@@ -1,0 +1,25 @@
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Anpassa höjden efter behov */
+}
+
+.booking-header {
+    font-size: 32px; /* Justera storleken på rubriken efter behov */
+    margin-bottom: 20px; /* Justera avståndet nedanför rubriken */
+}
+
+.booking-description {
+    font-size: 18px; /* Justera storleken på beskrivningen efter behov */
+    color: #666; /* Justera färgen på texten efter behov */
+    margin-bottom: 20px; /* Justera avståndet nedanför beskrivningen */
+}
+
+.booking-form {
+    max-width: 400px; /* Justera bredden på formuläret efter behov */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

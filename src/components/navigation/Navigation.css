@@ -1,0 +1,32 @@
+.navigation {
+  width: 1514px;
+  height: 109px;
+  left: -27px;
+  top: 195px;
+  background-color: #D3D3D3; /* Ljusgrå bakgrundsfärg */
+}
+
+.navigation ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.navigation ul li {
+  margin-right: 10px;
+}
+
+.navigation ul li a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #9D9D9D; /* Mörkgrå textfärg */
+  text-decoration: none;
+}
+
+.navigation ul li a.active {
+  color: white; /* Färg för aktiva länkar */
+}

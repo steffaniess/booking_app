@@ -1,0 +1,34 @@
+/* App.css eller Layout.css */
+
+/* Stilar för hela applikationen */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Gemensamma stilar för layouten */
+.header {
+  display: flex;
+  align-items: center; 
+  padding: 20px; 
+}
+
+.navigation {
+  margin-top: 20px;
+}
+
+.home {
+  margin-top: 20px;
+}
+
+/* Stilar för övriga delar av applikationen */

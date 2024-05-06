@@ -1,0 +1,30 @@
+/* Footer.css */
+.footer-container {
+  background-color: bisque;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centrerar innehållet horisontellt */
+  padding: 20px 0; /* Justera padding efter behov */
+  height: 100px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-icons li {
+  margin-right: 20px; /* Justera avståndet mellan ikonerna */
+}
+
+.social-icons a {
+  color: #333;
+  font-size: 24px; /* Justera storleken på ikonerna efter behov */
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000; /* Byt färg vid hover */
+}

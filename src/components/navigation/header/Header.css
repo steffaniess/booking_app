@@ -1,0 +1,20 @@
+/* Header.css */
+.header {
+    display: flex;
+    align-items: center; /* Centrera element vertikalt */
+    padding: 20px; /* Justera detta värde efter behov */
+     /* Justera höjden på headern efter behov med height: */
+    height: 100px; 
+
+}
+  
+  .logo-container {
+    margin-right: auto; /* Justera avståndet mellan loggan och navigationsmenyn */
+  }
+  
+  .logo {
+    width: 150px; /* Justera loggans bredd efter behov */
+    height: auto; /* Säkerställ att höjden justeras automatiskt för att behålla proportionerna */
+  }
+ 
+  
