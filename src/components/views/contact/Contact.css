@@ -1,17 +1,16 @@
-
-
 /* Form container */
 .form-container {
   max-width: 400px;
-  margin-bottom: 20%;
-  margin-top: 10%;
+  margin: 10% auto; /* Centrera vertikalt och justera topp- och bottenmarginaler */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 /* Form input fields */
-.form-input {
+.form-input,
+.form-textarea,
+.form-name {
   width: calc(100% - 22px); /* Använd calc för att ta hänsyn till padding */
   margin-bottom: 15px;
   padding: 10px;
@@ -22,12 +21,6 @@
 
 /* Större textruta */
 .form-textarea {
-  width: calc(100% - 22px); /* Använd calc för att ta hänsyn till padding */
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
   height: 150px; /* Justera höjden efter behov */
 }
 
@@ -58,14 +51,4 @@
 .form-label {
   margin-bottom: 8px;
   font-weight: bold;
-}
-
-/* Namn input */
-.form-name {
-  width: calc(100% - 22px); /* Använd calc för att ta hänsyn till padding */
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import axios from 'axios'; // Importera axios för att göra HTTP-förfrågningar
+import EmailService from '../../services/EmailService';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -39,6 +40,10 @@ const Contact = () => {
     } catch (error) {
       console.error('Ett fel uppstod:', error);
     }
+
+    // Skicka e-post direkt från frontend
+    const emailService = new EmailService();
+    emailService.SendEmail("your-email@example.com", "Your Name", "recipient@example.com", "Recipient Name", "Subject", "Message body");
   };
 
   return (
