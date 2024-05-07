@@ -18,8 +18,25 @@
 }
 
 .booking-form {
+    width: 100%; /* Formuläret tar upp hela bredden av föräldern */
     max-width: 400px; /* Justera bredden på formuläret efter behov */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.booking-form label {
+    margin-bottom: 10px;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
