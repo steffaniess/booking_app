@@ -8,13 +8,13 @@
 
 .booking-header {
     font-size: 32px; /* Justera storleken på rubriken efter behov */
-    margin-bottom: 20px; /* Justera avståndet nedanför rubriken */
+    margin-bottom:10%; /* Justera avståndet nedanför rubriken */
 }
 
 .booking-description {
     font-size: 18px; /* Justera storleken på beskrivningen efter behov */
     color: #666; /* Justera färgen på texten efter behov */
-    margin-bottom: 20px; /* Justera avståndet nedanför beskrivningen */
+    margin-bottom: 10%; /* Justera avståndet nedanför beskrivningen */
 }
 
 .booking-form {
