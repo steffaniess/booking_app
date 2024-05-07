@@ -4,7 +4,7 @@ import './Booking.css';
 const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
     return (
         <form onSubmit={onBookingSubmit}>
-            <label htmlFor="name">Namn:</label>
+            <label htmlFor="name">Name:</label>
             <input
                 type="text"
                 id="name"
@@ -13,7 +13,7 @@ const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
                 onChange={onInputChange}
                 required
             />
-            <label htmlFor="email">E-post:</label>
+            <label htmlFor="email">E-mail:</label>
             <input
                 type="email"
                 id="email"
@@ -22,7 +22,7 @@ const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
                 onChange={onInputChange}
                 required
             />
-            <label htmlFor="date">Datum:</label>
+            <label htmlFor="date">Date:</label>
             <input
                 type="date"
                 id="date"
@@ -31,7 +31,7 @@ const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
                 onChange={onInputChange}
                 required
             />
-            <label htmlFor="location">Plats:</label>
+            <label htmlFor="location">Location:</label>
             <select
                 id="location"
                 name="location"
@@ -39,11 +39,11 @@ const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
                 onChange={onInputChange}
                 required
             >
-                <option value="">Välj plats</option>
+                <option value="">Choose location</option>
                 <option value="Solna Trafikskola">Solna Trafikskola</option>
                 <option value="Vinsta Trafikskola">Vinsta Trafikskola</option>
             </select>
-            <button type="submit">Boka</button>
+            <button type="submit">Book</button>
         </form>
     );
 };
