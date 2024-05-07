@@ -1,6 +1,7 @@
 /* Home.css */
 .home {
-    margin: 20%; /* Justera detta värde efter höjden på din header */
+    margin-top: 10%; /* Justera detta värde efter höjden på din header */
+    margin-bottom: 20%;
     padding: 20px;
     text-align: center; /* Centrera texten horisontellt */
 }

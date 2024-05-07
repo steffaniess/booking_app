@@ -3,7 +3,8 @@
 /* Form container */
 .form-container {
   max-width: 400px;
-  margin: 20%;
+  margin-bottom: 20%;
+  margin-top: 10%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
