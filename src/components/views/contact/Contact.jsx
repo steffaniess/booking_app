@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import axios from 'axios'; // Importera axios för att göra HTTP-förfrågningar
-import EmailService from '../../services/EmailService';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -23,13 +22,15 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = {
+      name,
+      email,
+      message
+    };
+
     try {
       // Skicka e-postdata till backend genom en HTTP POST-förfrågan
-      const response = await axios.post('http://localhost:5000/api/email/send', {
-        name,
-        email,
-        message
-      });
+      const response = await axios.post('https://localhost:7011', formData); // Justera URL:en
 
       console.log(response.data); // Skriver ut svaret från servern i konsolen
 
@@ -40,10 +41,6 @@ const Contact = () => {
     } catch (error) {
       console.error('Ett fel uppstod:', error);
     }
-
-    // Skicka e-post direkt från frontend
-    const emailService = new EmailService();
-    emailService.SendEmail("your-email@example.com", "Your Name", "recipient@example.com", "Recipient Name", "Subject", "Message body");
   };
 
   return (

@@ -1,13 +1,14 @@
-class EmailService {
-    async SendEmail(fromEmail, fromName, toEmail, toName, subject, body) {
-      try {
-        // Skicka e-postmeddelandet här
-        console.log("Skickar e-post...");
-      } catch (error) {
-        console.error("Ett fel uppstod vid skickande av e-post:", error);
-      }
-    }
+import axios from 'axios';
+
+const sendEmail = async (formData) => {
+  try {
+    const response = await axios.post('http://localhost:5000/api/email/send', formData);
+    console.log(response.data); // För att visa svar från backend i konsolen
+    return response.data;
+  } catch (error) {
+    console.error('Ett fel uppstod:', error);
+    return null;
   }
-  
-  export default EmailService;
-  
+};
+
+export default sendEmail;
