@@ -4,17 +4,17 @@ import './Home.css';
 const Home = () => {
     return(
         <div className ='home'>
-            <h1>FellowBots Simulator Booking</h1>
-            <h3>The future of drivingslicense</h3>
-            <br/>
-            <br/>
+            <h1>Ready to try the simulator?</h1>
+            <h3>Meet the future of learning how to drive</h3>
+            <h3>& with the goal towards your freedom!</h3>
 
-            <h5>Förstasidan: lägg in en bild och lite info </h5>
-    
+            <img src="/images/FirstPagePic.JPG" alt="First Page Pic" />
 
         </div>
 
     );
 }
+
+
 
 export default Home; 

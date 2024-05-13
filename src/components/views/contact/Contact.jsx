@@ -30,7 +30,7 @@ const Contact = () => {
 
     try {
       // Skicka e-postdata till backend genom en HTTP POST-förfrågan
-      const response = await axios.post('https://localhost:7011', formData); // Justera URL:en
+      const response = await axios.post('https://localhost:7011/api/email/send', formData); // Justera URL:en
 
       console.log(response.data); // Skriver ut svaret från servern i konsolen
 
