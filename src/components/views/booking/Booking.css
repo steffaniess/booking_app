@@ -13,7 +13,7 @@
 .booking-description {
     font-size: 18px; /* Justera storleken på beskrivningen efter behov */
     color: #666; /* Justera färgen på texten efter behov */
-    margin-top: 10%;/* Justera avståndet nedanför beskrivningen */
+    margin-top: 10%; /* Justera avståndet nedanför beskrivningen */
 }
 
 .booking-form {
@@ -26,17 +26,46 @@
     flex-direction: column;
     margin-bottom: 20%;
 }
+
 .booking-form label {
     margin-bottom: 10px;
 }
 
 .booking-form input[type="text"],
 .booking-form input[type="email"],
-.booking-form input[type="date"] {
+.booking-form input[type="date"],
+.booking-form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.confirmation-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.confirmation-popup button {
+    display: block;
+    margin: 10px auto 0;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirmation-popup button:hover {
+    background: #0056b3;
 }

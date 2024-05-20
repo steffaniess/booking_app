@@ -1,48 +1,95 @@
 import React, { useState } from 'react';
 import BookingForm from './BookingForm';
 import './Booking.css';
+import axios from 'axios';
 
 const Booking = () => {
-    // State för att hålla formulärdata
     const [bookingData, setBookingData] = useState({
         name: '',
         email: '',
         date: '',
-        location: ''
+        location: '',
+        time: ''
     });
+    const [availableTimes, setAvailableTimes] = useState([]);
+    const [confirmationMessage, setConfirmationMessage] = useState('');
 
-    // Funktion för att hantera ändringar i formuläret
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setBookingData({ ...bookingData, [name]: value });
     };
 
-    // Funktion för att hantera bokningsknappens klickhändelse
-    const handleBookingSubmit = (e) => {
+    const fetchAvailableTimes = async (date, location) => {
+        try {
+            const response = await axios.get('https://localhost:7011/api/bookings/available-times', {
+                params: { date, location }
+            });
+            setAvailableTimes(response.data);
+        } catch (error) {
+            console.error('Error fetching available times:', error);
+            setAvailableTimes([]);
+        }
+    };
+
+    const handleDateChange = async (e) => {
+        const date = e.target.value;
+        setBookingData(prevState => ({ ...prevState, date }));
+        if (bookingData.location) {
+            await fetchAvailableTimes(date, bookingData.location);
+        }
+    };
+
+    const handleLocationChange = async (e) => {
+        const location = e.target.value;
+        setBookingData(prevState => ({ ...prevState, location }));
+        if (bookingData.date) {
+            await fetchAvailableTimes(bookingData.date, location);
+        }
+    };
+
+    const handleBookingSubmit = async (e) => {
         e.preventDefault();
-        // Här kan du skicka bokningsdata till backend och hantera resultatet
-        console.log('Bokningsdata:', bookingData);
-        // Återställ formuläret efter att bokningen är skickad
-        setBookingData({
-            name: '',
-            email: '',
-            date: '',
-            location: ''
-        });
+        try {
+            const response = await axios.post('https://localhost:7011/api/bookings', bookingData);
+            console.log('Booking confirmed:', response.data);
+
+            // Display confirmation message
+            setConfirmationMessage(`Booking confirmed for ${bookingData.date} at ${bookingData.location}`);
+
+            // Clear form fields
+            setBookingData({
+                name: '',
+                email: '',
+                date: '',
+                location: '',
+                time: ''
+            });
+            setAvailableTimes([]);
+        } catch (error) {
+            console.error('Error creating booking:', error);
+        }
     };
 
     return (
         <div className="booking-container">
             <h2 className="booking-header">FellowBots Simulator Booking</h2>
             <p className="booking-description">The future of driving licenses</p>
-            {/* Bokningsformulär */}
             <div className="booking-form">
                 <BookingForm
                     bookingData={bookingData}
                     onInputChange={handleInputChange}
+                    onDateChange={handleDateChange}
+                    onLocationChange={handleLocationChange}
                     onBookingSubmit={handleBookingSubmit}
+                    availableTimes={availableTimes}
                 />
             </div>
+            {confirmationMessage && (
+                <div className="confirmation-popup">
+                    {confirmationMessage}
+                    <button onClick={() => setConfirmationMessage('')}>Close</button>
+                </div>
+            )}
         </div>
     );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Booking.css';
 
-const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
+const BookingForm = ({ bookingData, onInputChange, onDateChange, onLocationChange, onBookingSubmit, availableTimes }) => {
     return (
-        <form onSubmit={onBookingSubmit}>
+        <form onSubmit={onBookingSubmit} className="form-container">
             <label htmlFor="name">Name:</label>
             <input
                 type="text"
@@ -28,7 +28,7 @@ const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
                 id="date"
                 name="date"
                 value={bookingData.date}
-                onChange={onInputChange}
+                onChange={(e) => onDateChange(e)}
                 required
             />
             <label htmlFor="location">Location:</label>
@@ -36,13 +36,33 @@ const BookingForm = ({ bookingData, onInputChange, onBookingSubmit }) => {
                 id="location"
                 name="location"
                 value={bookingData.location}
-                onChange={onInputChange}
+                onChange={(e) => {
+                    onInputChange(e);
+                    onLocationChange(e);
+                }}
                 required
             >
                 <option value="">Choose location</option>
                 <option value="Solna Trafikskola">Solna Trafikskola</option>
                 <option value="Vinsta Trafikskola">Vinsta Trafikskola</option>
             </select>
+
+            {availableTimes.length > 0 && (
+                <div>
+                    <label htmlFor="time">Available Times:</label>
+                    <select
+                        id="time"
+                        name="time"
+                        value={bookingData.time}
+                        onChange={onInputChange}
+                        required
+                    >
+                        {availableTimes.map((time, index) => (
+                            <option key={index} value={time}>{time}</option>
+                        ))}
+                    </select>
+                </div>
+            )}
             <button type="submit">Book</button>
         </form>
     );

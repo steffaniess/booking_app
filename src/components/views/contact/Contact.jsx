@@ -6,6 +6,7 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -21,65 +22,49 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
-    const formData = {
-      name,
-      email,
-      message
-    };
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setError("Alla fält måste fyllas i.");
+      return;
+  }
+  if (!email.includes('@')) {
+      setError("Ange en giltig e-postadress.");
+      return;
+  }
 
-    try {
-      // Skicka e-postdata till backend genom en HTTP POST-förfrågan
-      const response = await axios.post('https://localhost:7011/api/email/send', formData); // Justera URL:en
-
-      console.log(response.data); // Skriver ut svaret från servern i konsolen
-
-      // Återställ formuläret efter att e-posten skickats
+  try {
+      const formData = { name, email, message };
+      const response = await axios.post('https://localhost:7011/api/email/send', formData);
+      console.log(response.data);
+      alert('E-postmeddelande skickat!');
       setName('');
       setEmail('');
       setMessage('');
-    } catch (error) {
+  } catch (error) {
       console.error('Ett fel uppstod:', error);
-    }
-  };
+      setError('Ett fel uppstod när meddelandet skulle skickas.');
+  }
+};
 
-  return (
-    <form onSubmit={handleSubmit} className="form-container">
+return (
+  <form onSubmit={handleSubmit} className="form-container">
+      {error && <p className="error">{error}</p>}
       <div>
-        <label htmlFor="name" className="form-label">Namn:</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={handleNameChange}
-          className="form-name"
-          required
-        />
+          <label htmlFor="name" className="form-label">Name:</label>
+          <input type="text" id="name" value={name} onChange={handleNameChange} className="form-name" required />
       </div>
       <div>
-        <label htmlFor="email" className="form-label">E-post:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          className="form-input"
-          required
-        />
+          <label htmlFor="email" className="form-label">E-mail:</label>
+          <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" required />
       </div>
       <div>
-        <label htmlFor="message" className="form-label">Meddelande:</label>
-        <textarea
-          id="message"
-          value={message}
-          onChange={handleMessageChange}
-          className="form-textarea"
-          required
-        />
+          <label htmlFor="message" className="form-label">Message:</label>
+          <textarea id="message" value={message} onChange={handleMessageChange} className="form-textarea" required />
       </div>
-      <button type="submit" className="form-submit">Skicka</button>
-    </form>
-  );
+      <button type="submit" className="form-submit">Send</button>
+  </form>
+);
 };
 
 export default Contact;
