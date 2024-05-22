@@ -1,9 +1,9 @@
 import React from 'react';
 import './Booking.css';
 
-const BookingForm = ({ bookingData, onInputChange, onDateChange, onLocationChange, onBookingSubmit, availableTimes }) => {
+const BookingForm = ({ bookingData, onInputChange, onDateChange, onLocationChange, time,onBookingSubmit, availableTimes }) => {
     return (
-        <form onSubmit={onBookingSubmit} className="form-container">
+        <form onSubmit={onBookingSubmit} className="booking-form">
             <label htmlFor="name">Name:</label>
             <input
                 type="text"
@@ -28,7 +28,8 @@ const BookingForm = ({ bookingData, onInputChange, onDateChange, onLocationChang
                 id="date"
                 name="date"
                 value={bookingData.date}
-                onChange={(e) => onDateChange(e)}
+                onChange={(e) => 
+                    onDateChange(e.target.value)}
                 required
             />
             <label htmlFor="location">Location:</label>
@@ -38,7 +39,7 @@ const BookingForm = ({ bookingData, onInputChange, onDateChange, onLocationChang
                 value={bookingData.location}
                 onChange={(e) => {
                     onInputChange(e);
-                    onLocationChange(e);
+                    onLocationChange(e.target.value);
                 }}
                 required
             >
@@ -54,9 +55,12 @@ const BookingForm = ({ bookingData, onInputChange, onDateChange, onLocationChang
                         id="time"
                         name="time"
                         value={bookingData.time}
-                        onChange={onInputChange}
-                        required
-                    >
+                        onChange={(e) => {
+                            onInputChange(e);
+                            time(e.target.value);
+                        }}
+                        required>
+                    
                         {availableTimes.map((time, index) => (
                             <option key={index} value={time}>{time}</option>
                         ))}

@@ -4,31 +4,38 @@
     justify-content: center;
     align-items: center;
     margin-top: 10%;
+    text-align: center;
 }
 
 .booking-header {
     font-size: 32px; /* Justera storleken på rubriken efter behov */
+    margin-bottom: 10px;
 }
 
 .booking-description {
     font-size: 18px; /* Justera storleken på beskrivningen efter behov */
     color: #666; /* Justera färgen på texten efter behov */
-    margin-top: 10%; /* Justera avståndet nedanför beskrivningen */
+    margin-bottom: 20px; /* Justera avståndet nedanför beskrivningen */
 }
 
-.booking-form {
+.booking-form-container {
     width: 100%; /* Formuläret tar upp hela bredden av föräldern */
     max-width: 400px; /* Justera bredden på formuläret efter behov */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.booking-form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20%;
 }
 
 .booking-form label {
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .booking-form input[type="text"],

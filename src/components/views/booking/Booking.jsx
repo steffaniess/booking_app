@@ -31,20 +31,22 @@ const Booking = () => {
         }
     };
 
-    const handleDateChange = async (e) => {
-        const date = e.target.value;
+    const handleDateChange = async (date) => {
         setBookingData(prevState => ({ ...prevState, date }));
         if (bookingData.location) {
             await fetchAvailableTimes(date, bookingData.location);
         }
     };
 
-    const handleLocationChange = async (e) => {
-        const location = e.target.value;
+    const handleLocationChange = async (location) => {
         setBookingData(prevState => ({ ...prevState, location }));
         if (bookingData.date) {
             await fetchAvailableTimes(bookingData.date, location);
         }
+    };
+
+    const handleTimeChange = (time) => {
+        setBookingData(prevState => ({ ...prevState, time }));
     };
 
     const handleBookingSubmit = async (e) => {
@@ -74,12 +76,13 @@ const Booking = () => {
         <div className="booking-container">
             <h2 className="booking-header">FellowBots Simulator Booking</h2>
             <p className="booking-description">The future of driving licenses</p>
-            <div className="booking-form">
+            <div className="booking-form-container">
                 <BookingForm
                     bookingData={bookingData}
                     onInputChange={handleInputChange}
                     onDateChange={handleDateChange}
                     onLocationChange={handleLocationChange}
+                    onTimeChange={handleTimeChange}
                     onBookingSubmit={handleBookingSubmit}
                     availableTimes={availableTimes}
                 />

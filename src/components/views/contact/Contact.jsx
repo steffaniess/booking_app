@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Contact.css';
 import axios from 'axios'; // Importera axios för att göra HTTP-förfrågningar
+import './Contact.css';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -27,44 +27,54 @@ const Contact = () => {
     if (!name.trim() || !email.trim() || !message.trim()) {
       setError("Alla fält måste fyllas i.");
       return;
-  }
-  if (!email.includes('@')) {
+    }
+    if (!email.includes('@')) {
       setError("Ange en giltig e-postadress.");
       return;
-  }
+    }
 
-  try {
+    try {
       const formData = { name, email, message };
-      const response = await axios.post('https://localhost:7011/api/email/send', formData);
+      const response = await axios.post('https://localhost:7011/api/emailAPI/send', formData);
       console.log(response.data);
       alert('E-postmeddelande skickat!');
       setName('');
       setEmail('');
       setMessage('');
-  } catch (error) {
+    } catch (error) {
       console.error('Ett fel uppstod:', error);
       setError('Ett fel uppstod när meddelandet skulle skickas.');
-  }
-};
+    }
+  };
 
-return (
-  <form onSubmit={handleSubmit} className="form-container">
-      {error && <p className="error">{error}</p>}
-      <div>
-          <label htmlFor="name" className="form-label">Name:</label>
-          <input type="text" id="name" value={name} onChange={handleNameChange} className="form-name" required />
-      </div>
-      <div>
-          <label htmlFor="email" className="form-label">E-mail:</label>
-          <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" required />
-      </div>
-      <div>
-          <label htmlFor="message" className="form-label">Message:</label>
-          <textarea id="message" value={message} onChange={handleMessageChange} className="form-textarea" required />
-      </div>
-      <button type="submit" className="form-submit">Send</button>
-  </form>
-);
+  return (
+    <div className="contact-container">
+      <h2>Contact Us</h2>
+      <form onSubmit={handleSubmit} className="form-container">
+        <div className="form-content">
+          <div className="form-fields">
+            {error && <p className="error-message">{error}</p>}
+            <div className="form-group">
+              <label htmlFor="name" className="form-label">Name:</label>
+              <input type="text" id="name" value={name} onChange={handleNameChange} className="form-input" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email" className="form-label">E-mail:</label>
+              <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message" className="form-label">Message:</label>
+              <textarea id="message" value={message} onChange={handleMessageChange} className="form-textarea" required />
+            </div>
+            <button type="submit" className="form-submit">Send</button>
+          </div>
+          <div className="image-container">
+            <img src="/images/deadangle.JPG" alt="deadangle" className="contact-image" />
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default Contact;
